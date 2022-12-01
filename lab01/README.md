@@ -1,16 +1,5 @@
 ## Первая лабораторная работа ##
 
-Цели
-Part 1: Build the Network and Configure Basic Device Settings
-Part 2: Create VLANs and Assign Switch Ports
-Part 3: Configure an 802.1Q Trunk between the Switches
-Part 4: Configure Inter-VLAN Routing on the Router
-Part 5: Verify Inter-VLAN Routing is working
-
-
-Реализовать схему:
-![image](https://user-images.githubusercontent.com/60564360/205107265-9fc91b42-3b8c-4933-9b48-067daf071be3.png)
-
 ### Router-on-a-Stick Inter-VLAN Routing
 
 ### Цели
@@ -22,7 +11,7 @@ Part 5: Verify Inter-VLAN Routing is working
 
 ### Реализовать схему
 
-![img_19.png](router_on_a_stick_scheme.png)
+![image](https://user-images.githubusercontent.com/60564360/205107265-9fc91b42-3b8c-4933-9b48-067daf071be3.png)
 
 ### Таблица адресов
 
