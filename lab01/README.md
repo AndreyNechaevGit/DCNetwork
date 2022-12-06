@@ -205,6 +205,13 @@ VPCS> ping 192.168.3.3
 Проверка параметров:
 ```
 Spline01(config-if)# do sh running-config interface e1/1
+Spline01# sh ip int brief
+
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Lo1                  10.8.1.0        protocol-up/link-up/admin-up
+Lo2                  10.9.1.0        protocol-up/link-up/admin-up
+Eth1/1               10.9.1.1        protocol-down/link-down/admin-down
 ```
 </details>
 
