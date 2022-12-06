@@ -17,8 +17,11 @@
 ### Схема адресации
 
 10.Dn.Sn.x/31
+
 Sn - Spline Number
+
 X - IP by order
+
 Dn - DC Number for DC2 2 (8-15)
 
 DC2 10.8.xx.yy/14
