@@ -185,10 +185,9 @@ VPCS> ping 192.168.4.3
 #### Настройка Leaf1
 
 ```
-VPCS> set pcname PC1
-PC1> ip 192.168.3.3 255.255.255.0 192.168.3.1
-Checking for duplicate address...
-PC1 : 192.168.3.3 255.255.255.0 gateway 192.168.3.1
+switch# hostname Spline01
+Spline01(config)# interface ethernet 1/1
+Spline01(config-if)# ip address 10.9.1.0 255.255.255.252
 ```
 
 <details>
@@ -205,16 +204,7 @@ VPCS> ping 192.168.3.3
 ```
 Проверка параметров:
 ```
-VPCS> show ip
-
-NAME        : VPCS[1]
-IP/MASK     : 192.168.3.3/24
-GATEWAY     : 192.168.3.1
-DNS         :
-MAC         : 00:50:79:66:68:04
-LPORT       : 20000
-RHOST:PORT  : 127.0.0.1:30000
-MTU         : 1500
+Spline01(config-if)# do sh running-config interface e1/1
 ```
 </details>
 
