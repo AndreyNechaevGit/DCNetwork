@@ -5,12 +5,19 @@
 {:toc}
 
 [Purpose](https://github.com/hillaryfraley/jobbriefings#purpose)
+[Daily Briefing]([https://github.com/hillaryfraley/jobbriefings](https://github.com/AndreyNechaevGit/DCNetwork/lab01#Таблица IP адресов)
 
-[Scope](https://github.com/hillaryfraley/jobbriefings#scope)
 
-[Work Practice](https://github.com/hillaryfraley/jobbriefings#work-practice)
-
-[Daily Briefing](https://github.com/hillaryfraley/jobbriefings#daily-briefing)
+Первая лабораторная работа
+Проектирование адресного пространства в CLOS сети
+Таблица IP адресов
+Введение
+Настройка корректной загрузки Cisco Nexus v9500 v9.3.10
+На всех устройствах назначим корректный hostname
+Назначение IP адресов на стенде:
+Пример настройки Spline/Leaf
+Пример настройки PC
+Итоговые конфигурации устройств:
 
 ## Проектирование адресного пространства в CLOS сети
 
