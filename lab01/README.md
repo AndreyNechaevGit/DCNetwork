@@ -6,7 +6,7 @@
 
 [Purpose](https://github.com/hillaryfraley/jobbriefings#purpose)
 
-[Daily Briefing](https://github.com/AndreyNechaevGit/DCNetwork/tree/main/lab01#Таблица IP адресов)
+[Daily Briefing](https://github.com/AndreyNechaevGit/DCNetwork/tree/main/lab01)
 
 
 Первая лабораторная работа
