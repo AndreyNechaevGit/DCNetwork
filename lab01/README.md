@@ -1,13 +1,14 @@
 # Первая лабораторная работа
 
 [Таблица IP адресов](https://github.com/AndreyNechaevGit/DCNetwork/blob/main/lab01/README.md#%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
+
 [Итоговая конфигурация устройств:](https://github.com/AndreyNechaevGit/DCNetwork/tree/main/lab01#%D0%B8%D1%82%D0%BE%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2)
 
 ## Проектирование адресного пространства в CLOS сети
 
 **Цели:**
  - Собрать схему CLOS;
- - Распределить адресное пространство для Underlay сетио;
+ - Распределить адресное пространство для Underlay сети;
 
 **Реализовать схему топологию CLOS** по схеме:
 ![image](https://user-images.githubusercontent.com/60564360/208510561-f4c64890-dd9d-4507-8a0c-e6102ba272d3.png)
