@@ -6,13 +6,11 @@
 
 **Цели:**
  - Собрать схему CLOS;
- - Распределить адресное пространство;
+ - Распределить адресное пространство для Underlay сетио;
 
 **Реализовать схему топологию CLOS** по схеме:
 
 ![image](https://user-images.githubusercontent.com/60564360/205107265-9fc91b42-3b8c-4933-9b48-067daf071be3.png)
-
-Распределить адресное пространство для Underlay сети
 
 **Схема адресации**
 
@@ -80,15 +78,34 @@ PC4|NIC|10.12.3.2/24
 - **POD** (Point Of Delivery) — обособленная группа  устройств,  где *Spline* первого уровня подключается к *Spline* второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
 
 
-
-
 Настроим устройства для дальнейшего построения лабораторных работ, :
 
 1) Включим и настроим сохранение настроек для Cisco Nexus v9500.
 2) Назначим IP адреса на все интерфейсы согласно Таблица адресов.
 3) Настройки по умолчанию (шаг №0).
 
+### Настройка корректной загрузки Cisco Nexus v9500 v9.3.10
+**На всех добавленных образах выполнить приначальной загрузке**
+```
+loader > dir
+loader > boot nxos.9.3.10.bin
+```
+**затем добавить в конфиг путь к образу:**
+```
+switch # conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Leaf01(config)# boot nxos bootflash:/nxos.9.3.10.bin sup-1
+Performing image verification and compatibility check, please wait....
+Leaf01(config)# do copy running-config startup-config
+[########################################] 100%
+Copy complete, now saving to disk (please wait)...
+Copy complete.
+```
+
+
+
 ### Подготовка стенда
+
 
 #### Настройка PC-A
 
