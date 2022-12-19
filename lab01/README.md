@@ -9,8 +9,7 @@
  - Распределить адресное пространство для Underlay сетио;
 
 **Реализовать схему топологию CLOS** по схеме:
-
-![image](https://user-images.githubusercontent.com/60564360/205107265-9fc91b42-3b8c-4933-9b48-067daf071be3.png)
+![image](https://user-images.githubusercontent.com/60564360/208510561-f4c64890-dd9d-4507-8a0c-e6102ba272d3.png)
 
 **Схема IP адресации устройств**
 
