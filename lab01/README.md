@@ -85,10 +85,14 @@ PC4|NIC|10.12.3.2/24
 3) Настройки по умолчанию (шаг №0).
 
 ### Настройка корректной загрузки Cisco Nexus v9500 v9.3.10
-**На всех добавленных образах выполнить приначальной загрузке**
+
+<details>
+<summary> Настройка корректной загрузки Cisco Nexus v9500: </summary>
+ 
+**На всех добавленных образах выполнить при начальной загрузке**
 ```
 loader > dir
-loader > boot nxos.9.3.10.bin
+loader > boot nxos.9.у.х.bin
 ```
 **затем добавить в конфиг путь к образу:**
 ```
@@ -101,7 +105,7 @@ Leaf01(config)# do copy running-config startup-config
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ```
-
+</details>
 
 
 ### Подготовка стенда
