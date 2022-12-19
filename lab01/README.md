@@ -1,22 +1,7 @@
 # Первая лабораторная работа
 
-[[toc]]
-[{:toc}]
-
-[Таблица IP адресов]()
-[Итоговая конфигурация устройств](https://github.com/AndreyNechaevGit/DCNetwork/tree/main/lab01#%D0%B8%D1%82%D0%BE%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2)
-
-
-Первая лабораторная работа
-Проектирование адресного пространства в CLOS сети
-Таблица IP адресов
-Введение
-Настройка корректной загрузки Cisco Nexus v9500 v9.3.10
-На всех устройствах назначим корректный hostname
-Назначение IP адресов на стенде:
-Пример настройки Spline/Leaf
-Пример настройки PC
-Итоговые конфигурации устройств:
+[Таблица IP адресов](https://github.com/AndreyNechaevGit/DCNetwork/blob/main/lab01/README.md#%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BE%D0%B2)
+[Итоговая конфигурация устройств:](https://github.com/AndreyNechaevGit/DCNetwork/tree/main/lab01#%D0%B8%D1%82%D0%BE%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B8-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2)
 
 ## Проектирование адресного пространства в CLOS сети
 
