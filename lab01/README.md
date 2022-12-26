@@ -12,9 +12,9 @@
 
 ### Введение
 
-- **Spline** - используется  связи **Leaf** устройств между собой <br> 
+- **Spine** - используется  связи **Leaf** устройств между собой <br> 
 - **Leaf** - используется для подключения конечных **устройств** хостов, Firewall, Borders и т.д.<br>
-- **POD** (Point Of Delivery) — обособленная группа  устройств,  где *Spline* первого уровня подключается к *Spline* второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
+- **POD** (Point Of Delivery) — обособленная группа  устройств,  где *Spine* первого уровня подключается к *Spine* второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
 - loopback 01 - для динамической маршрутизации Underlay 
 - loopback 02- для динамической маршрутизации Overlay 
 
@@ -26,7 +26,7 @@
 
 10.Dn.Sn.x/13 <br>
 - Dn - DC Number (for DC2 (8-15))
-- Sn - Spline Number
+- Sn - Spine Number
 - X - IP by order
 
 **Пример сетей для ЦОД2:** <br>
@@ -41,9 +41,9 @@ p2p линки - /31<br>
 lo - интерфейсы /32<br>
 
 >Например: <br>
-Spline1 lo1 10.8.1.0/32<br>
+Spine1 lo1 10.8.1.0/32<br>
 Leaf1 lo2 10.9.1.0/32 <br>
-Spline2-Leaf1 p2p 10.9.2.0/31 <br>
+Spine2-Leaf1 p2p 10.9.2.0/31 <br>
 
 
 
@@ -51,12 +51,12 @@ Spline2-Leaf1 p2p 10.9.2.0/31 <br>
 
 |Device|Interface|  IP Address  |
 |---|-----| ------------: |
-Spline1|e1/1|10.10.1.0/31
+Spine1|e1/1|10.10.1.0/31
 -|e1/2|10.10.1.2/31
 -|e1/3|10.10.1.4/31
 -|lo1|10.8.1.0/32
 -|lo2|10.9.1.0/32
-Spline2|e1/1|10.10.2.0/31
+Spine2|e1/1|10.10.2.0/31
 -|e1/2|10.10.2.2/31
 -|e1/3|10.10.2.4/31
 -|lo1|10.8.2.1/32
@@ -113,26 +113,26 @@ Copy complete.
 
 #### На всех устройствах назначим корректный hostname
 ```
-switch# hostname Spline01
+switch# hostname Spine01
 ```
 
 ### Назначение IP адресов на стенде:
 
-#### Пример настройки Spline/Leaf
+#### Пример настройки Spine/Leaf
 
 ```
-Spline01(config)# interface ethernet 1/1
-Spline01(config-if)# ip address 10.9.1.0 255.255.255.252
-Spline01(config-if)# exit
-Spline01(config)# interface lo1
-Spline01(config-if)# ip address 10.8.1.0 255.255.255.255
+Spine01(config)# interface ethernet 1/1
+Spine01(config-if)# ip address 10.9.1.0 255.255.255.252
+Spine01(config-if)# exit
+Spine01(config)# interface lo1
+Spine01(config-if)# ip address 10.8.1.0 255.255.255.255
 ```
 
 <details>
 <summary> Проверка параметров: </summary>
 
 ```
-Spline01(config-if)# do sh running-config interface e1/1
+Spine01(config-if)# do sh running-config interface e1/1
 !Command: show running-config interface Ethernet1/1
 !Running configuration last done at: Fri Dec 16 17:50:00 2022
 !Time: Mon Dec 19 05:46:28 2022
@@ -142,7 +142,7 @@ interface Ethernet1/1
   ip address 10.10.1.0/31
   no shutdown
 
-Spline01(config)# sh ip int brief
+Spine01(config)# sh ip int brief
 
 IP Interface Status for VRF "default"(1)
 Interface            IP Address      Interface Status
@@ -152,7 +152,7 @@ Eth1/1               10.10.1.0       protocol-up/link-up/admin-up
 Eth1/2               10.10.1.2       protocol-up/link-up/admin-up
 Eth1/3               10.10.1.4       protocol-up/link-up/admin-up
 
-Spline01(config)# sh cdp neighbors
+Spine01(config)# sh cdp neighbors
 Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater,
                   V - VoIP-Phone, D - Remotely-Managed-Device,
@@ -209,7 +209,7 @@ MTU         : 1500
 
 ### Итоговые конфигурации устройств:
 
-**Spline01**
+**Spine01**
 ```
 interface Ethernet1/1
   description to-leaf-01
@@ -233,7 +233,7 @@ interface loopback2
   ip address 10.9.1.0/32
 
 ```
-**Spline02**
+**Spine02**
 ```
 interface Ethernet1/1
   description to-leaf-01
@@ -265,12 +265,12 @@ interface Ethernet1/1
   no shutdown
 
 interface Ethernet1/6
-  description to-spline-01
+  description to-Spine-01
   ip address 10.10.1.1/31
   no shutdown
   
 interface Ethernet1/7
-  description to-spline-02
+  description to-Spine-02
   ip address 10.10.2.1/31
   no shutdown
   
@@ -289,12 +289,12 @@ interface Ethernet1/1
   no shutdown
 
 interface Ethernet1/6
-  description to-spline-01
+  description to-Spine-01
   ip address 10.10.1.3/31
   no shutdown
   
 interface Ethernet1/7
-  description to-spline-02
+  description to-Spine-02
   ip address 10.10.2.3/31
   no shutdown
   
@@ -318,12 +318,12 @@ interface Ethernet1/2
   no shutdown
 
 interface Ethernet1/6
-  description to-spline-01
+  description to-Spine-01
   ip address 10.10.1.5/31
   no shutdown
   
 interface Ethernet1/7
-  description to-spline-02
+  description to-Spine-02
   ip address 10.10.2.5/31
   no shutdown
   
