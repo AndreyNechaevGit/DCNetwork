@@ -20,7 +20,7 @@
 
 
 **Реализовать схему топологию CLOS** по схеме:
-![image](https://user-images.githubusercontent.com/60564360/208510561-f4c64890-dd9d-4507-8a0c-e6102ba272d3.png)
+![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
 
 **Схема IP адресации устройств**
 
