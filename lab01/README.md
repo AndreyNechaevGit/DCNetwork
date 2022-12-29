@@ -7,17 +7,17 @@
 ## Проектирование адресного пространства в CLOS сети
 
 **Цели:**
- - Собрать схему CLOS;
- - Распределить адресное пространство для Underlay сети;
+
+- Собрать схему CLOS;
+- Распределить адресное пространство для Underlay сети;
 
 ### Введение
 
-- **Spine** - используется  связи **Leaf** устройств между собой <br> 
+- **Spine** - используется связи **Leaf** устройств между собой <br>
 - **Leaf** - используется для подключения конечных **устройств** хостов, Firewall, Borders и т.д.<br>
-- **POD** (Point Of Delivery) — обособленная группа  устройств,  где *Spine* первого уровня подключается к *Spine* второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
-- loopback 01 - для динамической маршрутизации Underlay 
-- loopback 02- для динамической маршрутизации Overlay 
-
+- **POD** (Point Of Delivery) — обособленная группа устройств, где _Spine_ первого уровня подключается к _Spine_ второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
+- loopback 01 - для динамической маршрутизации Underlay
+- loopback 02- для динамической маршрутизации Overlay
 
 **Реализовать схему топологию CLOS** по схеме:
 ![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
@@ -25,6 +25,7 @@
 **Схема IP адресации устройств**
 
 10.Dn.Sn.x/13 <br>
+
 - Dn - DC Number (for DC2 (8-15))
 - Sn - Spine Number
 - X - IP by order
@@ -32,6 +33,7 @@
 **Пример сетей для ЦОД2:** <br>
 **lo1** 10.8.0.0/16 <br>
 **lo2** 10.9.0.0/16 <br>
+
 **p2p** 10.10.0.0/16 <br>
 **reserved** 10.11.0.0/16 <br>
 **services** 10.12.0.0/14 <br>
@@ -39,70 +41,74 @@
 **На устройствах принимаем** <br>
 p2p линки - /31<br>
 lo - интерфейсы /32<br>
+10.8.Y.0/32 для **lo0** Spine Y<br>
+10.9.Y.0/32 для **lo1** Spine Y<br>
+10.8.0.X/32 для **lo0** Leaf X<br>
+10.9.0.X/32 для **lo1** Leaf X<br>
 
->Например: <br>
-Spine1 lo1 10.8.1.0/32<br>
-Leaf1 lo2 10.9.0.1/32 <br>
-Spine2-Leaf1 p2p 10.9.2.0/31 <br>
+> Например: <br>
+> Spine2 lo1 10.8.2.0/32<br>
+> Leaf1 lo2 10.9.0.1/32 <br>
+> Spine2-Leaf1 p2p 10.9.2.0/31 <br>
 
 #### Таблица IP адресов
 
-|Device|Interface|  IP Address  |
-|---|-----| ------------: |
-Spine1|e1/1|10.10.1.0/31
--|e1/2|10.10.1.2/31
--|e1/3|10.10.1.4/31
--|lo1|10.8.1.0/32
--|lo2|10.9.1.0/32
-Spine2|e1/1|10.10.2.0/31
--|e1/2|10.10.2.2/31
--|e1/3|10.10.2.4/31
--|lo1|10.8.2.0/32
--|lo2|10.9.2.0/32
-Leaf1|e1/1|10.12.1.254/24
--|e1/6|10.10.1.1/31
--|e1/7|10.10.2.1/31
--|lo1|10.8.0.1/32
--|lo2|10.9.0.1/32
-Leaf2|e1/1|10.12.2.254/24
--|e1/6|10.10.1.3/31
--|e1/7|10.10.2.3/31
--|lo1|10.8.0.2/32
--|lo2|10.9.0.2/32
-Leaf3|e1/1|10.12.3.254/24
--|e1/6|10.10.1.5/31
--|e1/7|10.10.2.5/31
--|lo1|10.8.0.3/32
--|lo2|10.9.0.3/32
-PC1|NIC|10.12.1.1/24
-PC2|NIC|10.12.2.1/24
-PC3|NIC|10.12.3.1/24
-PC4|NIC|10.12.3.2/24
+| Device | Interface |     IP Address |
+| ------ | --------- | -------------: |
+| Spine1 | e1/1      |   10.10.1.0/31 |
+| -      | e1/2      |   10.10.1.2/31 |
+| -      | e1/3      |   10.10.1.4/31 |
+| -      | lo1       |    10.8.1.0/32 |
+| -      | lo2       |    10.9.1.0/32 |
+| Spine2 | e1/1      |   10.10.2.0/31 |
+| -      | e1/2      |   10.10.2.2/31 |
+| -      | e1/3      |   10.10.2.4/31 |
+| -      | lo1       |    10.8.2.0/32 |
+| -      | lo2       |    10.9.2.0/32 |
+| Leaf1  | e1/1      | 10.12.1.254/24 |
+| -      | e1/6      |   10.10.1.1/31 |
+| -      | e1/7      |   10.10.2.1/31 |
+| -      | lo1       |    10.8.0.1/32 |
+| -      | lo2       |    10.9.0.1/32 |
+| Leaf2  | e1/1      | 10.12.2.254/24 |
+| -      | e1/6      |   10.10.1.3/31 |
+| -      | e1/7      |   10.10.2.3/31 |
+| -      | lo1       |    10.8.0.2/32 |
+| -      | lo2       |    10.9.0.2/32 |
+| Leaf3  | e1/1      | 10.12.3.254/24 |
+| -      | e1/6      |   10.10.1.5/31 |
+| -      | e1/7      |   10.10.2.5/31 |
+| -      | lo1       |    10.8.0.3/32 |
+| -      | lo2       |    10.9.0.3/32 |
+| PC1    | NIC       |   10.12.1.1/24 |
+| PC2    | NIC       |   10.12.2.1/24 |
+| PC3    | NIC       |   10.12.3.1/24 |
+| PC4    | NIC       |   10.12.3.2/24 |
 
 <details>
 <summary> Старые значения для looback: </summary>
 
-|Device|Interface|  IP Address  |
-|---|-----| ------------: |
-Spine1|lo1|10.8.1.0/32
--|lo2|10.9.1.0/32
-Spine2|lo1|10.8.2.1/32
--|lo2|10.9.2.1/32
-Leaf1|lo1|10.8.1.3/32
--|lo2|10.9.1.3/32
-Leaf2|lo1|10.8.1.4/32
--|lo2|10.9.1.4/32
-Leaf3|lo1|10.8.1.5/32
--|lo2|10.9.1.5/32
+| Device | Interface |  IP Address |
+| ------ | --------- | ----------: |
+| Spine1 | lo1       | 10.8.1.0/32 |
+| -      | lo2       | 10.9.1.0/32 |
+| Spine2 | lo1       | 10.8.2.1/32 |
+| -      | lo2       | 10.9.2.1/32 |
+| Leaf1  | lo1       | 10.8.1.3/32 |
+| -      | lo2       | 10.9.1.3/32 |
+| Leaf2  | lo1       | 10.8.1.4/32 |
+| -      | lo2       | 10.9.1.4/32 |
+| Leaf3  | lo1       | 10.8.1.5/32 |
+| -      | lo2       | 10.9.1.5/32 |
+
 </details>
 
 <br>
 
 Настроим устройства для дальнейшего построения лабораторных работ, :
 
-1) Базовые настройки для Cisco Nexus v9500.
-2) Назначим IP адреса на все интерфейсы согласно Таблица адресов.
-
+1. Базовые настройки для Cisco Nexus v9500.
+2. Назначим IP адреса на все интерфейсы согласно Таблица адресов.
 
 #### Настройка корректной загрузки Cisco Nexus v9500 v9.3.10
 
@@ -113,7 +119,9 @@ Leaf3|lo1|10.8.1.5/32
 loader > dir
 loader > boot nxos.9.у.х.bin
 ```
+
 **затем добавить в конфиг путь к загрузочному образу:**
+
 ```
 switch # conf t
 Enter configuration commands, one per line. End with CNTL/Z.
@@ -124,9 +132,11 @@ Leaf01(config)# do copy running-config startup-config
 Copy complete, now saving to disk (please wait)...
 Copy complete.
 ```
+
 </details>
 
 #### На всех устройствах назначим корректный hostname
+
 ```
 switch# hostname Spine01
 ```
@@ -185,15 +195,18 @@ Total entries displayed: 3
 
 
 ```
+
 </details>
 
 #### Пример настройки PC
+
 ```
 VPCS> set pcname PC1
 PC1> ip 10.12.0.1 255.255.255.0 10.12.0.254
 Checking for duplicate address...
 PC1 : 10.12.0.1 255.255.255.0 gateway 10.12.0.254
 ```
+
 <details>
 <summary> Проверка: </summary>
 
@@ -207,7 +220,9 @@ PC1> ping  10.12.0.254
 84 bytes from 10.12.0.254 icmp_seq=5 ttl=255 time=7.306 ms
 
 ```
+
 Проверка параметров:
+
 ```
 PC1> show ip
 
@@ -220,11 +235,13 @@ LPORT       : 20000
 RHOST:PORT  : 127.0.0.1:30000
 MTU         : 1500
 ```
+
 </details>
 
 ### Итоговые конфигурации устройств:
 
 **Spine01**
+
 ```
 interface Ethernet1/1
   description to-leaf-01
@@ -248,7 +265,9 @@ interface loopback2
   ip address 10.9.1.0/32
 
 ```
+
 **Spine02**
+
 ```
 interface Ethernet1/1
   description to-leaf-01
@@ -266,13 +285,15 @@ interface Ethernet1/3
   no shutdown
   
 interface loopback1
-  ip address 10.8.2.1/32
+  ip address 10.8.2.0/32
 
 interface loopback2
-  ip address 10.9.2.1/32
+  ip address 10.9.2.0/32
 
 ```
+
 **Leaf01**
+
 ```
 interface Ethernet1/1
   description to-PC1
@@ -280,23 +301,25 @@ interface Ethernet1/1
   no shutdown
 
 interface Ethernet1/6
-  description to-Spine-01
+  description to-spine-01
   ip address 10.10.1.1/31
   no shutdown
   
 interface Ethernet1/7
-  description to-Spine-02
+  description to-spine-02
   ip address 10.10.2.1/31
   no shutdown
   
 interface loopback1
-  ip address 10.8.1.3/32
+  ip address 10.8.0.1/32
 
 interface loopback2
-  ip address 10.9.1.3/32
+  ip address 10.9.0.1/32
 
 ```
+
 **Leaf02**
+
 ```
 interface Ethernet1/1
   description to-PC2
@@ -304,23 +327,26 @@ interface Ethernet1/1
   no shutdown
 
 interface Ethernet1/6
-  description to-Spine-01
+  description to-spine-01
   ip address 10.10.1.3/31
   no shutdown
   
 interface Ethernet1/7
-  description to-Spine-02
+  description to-spine-02
   ip address 10.10.2.3/31
   no shutdown
   
 interface loopback1
-  ip address 10.8.1.4/32
+  ip address 10.8.0.2/32
 
 interface loopback2
-  ip address 10.9.1.4/32
+  ip address 10.9.0.2/32
+
 
 ```
+
 **Leaf03**
+
 ```
 interface Ethernet1/1
   description to-PC3
@@ -333,18 +359,19 @@ interface Ethernet1/2
   no shutdown
 
 interface Ethernet1/6
-  description to-Spine-01
+  description to-spine-01
   ip address 10.10.1.5/31
   no shutdown
   
 interface Ethernet1/7
-  description to-Spine-02
+  description to-spine-02
   ip address 10.10.2.5/31
   no shutdown
   
 interface loopback1
-  ip address 10.8.1.5/32
+  ip address 10.8.0.3/32
 
 interface loopback2
-  ip address 10.9.1.5/32
+  ip address 10.9.0.3/32
+  
 ```
