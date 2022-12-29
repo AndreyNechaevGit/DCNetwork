@@ -16,8 +16,8 @@
 - **Spine** - используется связи **Leaf** устройств между собой <br>
 - **Leaf** - используется для подключения конечных **устройств** хостов, Firewall, Borders и т.д.<br>
 - **POD** (Point Of Delivery) — обособленная группа устройств, где _Spine_ первого уровня подключается к _Spine_ второго уровня, т.е. некий "кирпичик" ЦОДа.<br>
-- loopback 01 - для динамической маршрутизации Underlay
-- loopback 02 - для динамической маршрутизации Overlay
+- **loopback 01** - для динамической маршрутизации Underlay<br>
+- **loopback 02** - для динамической маршрутизации Overlay<br>
 
 **Реализовать схему топологию CLOS** по схеме:
 ![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
@@ -252,12 +252,12 @@ interface Ethernet1/2
   description to-leaf-02
   ip address 10.10.1.2/31
   no shutdown
-  
+
 interface Ethernet1/3
   description to-leaf-02
   ip address 10.10.1.4/31
   no shutdown
-  
+
 interface loopback1
   ip address 10.8.1.0/32
 
@@ -278,12 +278,12 @@ interface Ethernet1/2
   description to-leaf-02
   ip address 10.10.2.2/31
   no shutdown
-  
+
 interface Ethernet1/3
   description to-leaf-03
   ip address 10.10.2.4/31
   no shutdown
-  
+
 interface loopback1
   ip address 10.8.2.0/32
 
@@ -304,12 +304,12 @@ interface Ethernet1/6
   description to-spine-01
   ip address 10.10.1.1/31
   no shutdown
-  
+
 interface Ethernet1/7
   description to-spine-02
   ip address 10.10.2.1/31
   no shutdown
-  
+
 interface loopback1
   ip address 10.8.0.1/32
 
@@ -330,12 +330,12 @@ interface Ethernet1/6
   description to-spine-01
   ip address 10.10.1.3/31
   no shutdown
-  
+
 interface Ethernet1/7
   description to-spine-02
   ip address 10.10.2.3/31
   no shutdown
-  
+
 interface loopback1
   ip address 10.8.0.2/32
 
@@ -362,16 +362,16 @@ interface Ethernet1/6
   description to-spine-01
   ip address 10.10.1.5/31
   no shutdown
-  
+
 interface Ethernet1/7
   description to-spine-02
   ip address 10.10.2.5/31
   no shutdown
-  
+
 interface loopback1
   ip address 10.8.0.3/32
 
 interface loopback2
   ip address 10.9.0.3/32
-  
+
 ```
