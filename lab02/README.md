@@ -157,41 +157,69 @@ Spine01(config-if)# ip address 10.8.1.0 255.255.255.255
 <summary> Проверка параметров: </summary>
 
 ```
-Spine01(config-if)# do sh running-config interface e1/1
-!Command: show running-config interface Ethernet1/1
-!Running configuration last done at: Fri Dec 16 17:50:00 2022
-!Time: Mon Dec 19 05:46:28 2022
-version 9.3(10) Bios:version
-interface Ethernet1/1
-  description to-leaf-01
-  ip address 10.10.1.0/31
-  no shutdown
+Leaf-Switch-V1# show ip ospf
 
-Spine01(config)# sh ip int brief
+ Routing Process UNDERLAY with ID 10.1.1.54 VRF default
+ Routing Process Instance Number 1
+ Stateful High Availability enabled
+ Graceful-restart is configured
+   Grace period: 60 state: Inactive 
+   Last graceful restart exit status: None
+ Supports only single TOS(TOS0) routes
+ Supports opaque LSA
+ Administrative distance 110
+ Reference Bandwidth is 40000 Mbps
+ SPF throttling delay time of 200.000 msecs,
+   SPF throttling hold time of 1000.000 msecs, 
+   SPF throttling maximum wait time of 5000.000 msecs
+ LSA throttling start time of 0.000 msecs,
+   LSA throttling hold interval of 5000.000 msecs, 
+   LSA throttling maximum wait time of 5000.000 msecs
+ Minimum LSA arrival 1000.000 msec
+ LSA group pacing timer 10 secs
+ Maximum paths to destination 8
+ Number of external LSAs 0, checksum sum 0
+ Number of opaque AS LSAs 0, checksum sum 0
+ Number of areas is 1, 1 normal, 0 stub, 0 nssa
+ Number of active areas is 1, 1 normal, 0 stub, 0 nssa
+ Install discard route for summarized external routes.
+ Install discard route for summarized internal routes.
+   Area BACKBONE(0.0.0.0) 
+        Area has existed for 03:12:54
+        Interfaces in this area: 2 Active interfaces: 2
+        Passive interfaces: 0  Loopback interfaces: 1
+        No authentication available
+        SPF calculation has run 5 times
+         Last SPF ran for 0.000195s
+        Area ranges are
+        Number of LSAs: 3, checksum sum 0x196c2
 
-IP Interface Status for VRF "default"(1)
-Interface            IP Address      Interface Status
-Lo1                  10.8.1.0        protocol-up/link-up/admin-up
-Lo2                  10.9.1.0        protocol-up/link-up/admin-up
-Eth1/1               10.10.1.0       protocol-up/link-up/admin-up
-Eth1/2               10.10.1.2       protocol-up/link-up/admin-up
-Eth1/3               10.10.1.4       protocol-up/link-up/admin-up
+Leaf-Switch-V1# show ip ospf interface
 
-Spine01(config)# sh cdp neighbors
-Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater,
-                  V - VoIP-Phone, D - Remotely-Managed-Device,
-                  s - Supports-STP-Dispute
+loopback0 is up, line protocol is up
+    IP address 10.1.1.54/32
+    Process ID UNDERLAY VRF default, area 0.0.0.0
+    Enabled by interface configuration
+    State LOOPBACK, Network type LOOPBACK, cost 1
+    Index 1
+ Ethernet1/41 is up, line protocol is up
+    Unnumbered interface using IP address of loopback0 (10.1.1.54)
+    Process ID UNDERLAY VRF default, area 0.0.0.0
+    Enabled by interface configuration
+    State P2P, Network type P2P, cost 4
+    Index 2, Transmit delay 1 sec
+    1 Neighbors, flooding to 1, adjacent with 1
+    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit 5
+      Hello timer due in 00:00:07
+    No authentication
+    Number of opaque link LSAs: 0, checksum sum 0
 
-Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
-Leaf01(927JNTV9I7N)
-                    Eth1/1         141    R S s     N9K-C9500v    Eth1/6
-Leaf02(9LH5WO687NC)
-                    Eth1/2         156    R S s     N9K-C9500v    Eth1/6
-Leaf03(9L8LOMSYRQS)
-                    Eth1/3         155    R S s     N9K-C9500v    Eth1/6
+Leaf-Switch-V1# show ip ospf neighbors 
 
-Total entries displayed: 3
+OSPF Process ID UNDERLAY VRF default
+ Total number of neighbors: 1
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 10.1.1.53          1 FULL/ -          06:18:32 10.1.1.53        Eth1/41
 
 
 ```
