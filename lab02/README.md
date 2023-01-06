@@ -12,6 +12,8 @@
 
 
 ### Введение
+OSPF
+Designated Router (DR) и Backup Designated Router (BDR).
 
 - **BFD** - используется связи **Leaf** устройств между собой <br>
 - **ECMP** - используется для подключения конечных **устройств** хостов, Firewall, Borders и т.д.<br>
