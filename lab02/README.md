@@ -27,6 +27,56 @@ Network types are as follows:
 Point-to-point—A network that exists only between two routers. All neighbors on a point-to-point network establish adjacency and there is no DR.
 Broadcast—A network with multiple routers that can communicate over a shared medium that allows broadcast traffic, such as Ethernet. OSPFv2 routers establish a DR and BDR that controls LSA flooding on the network. OSPFv2 uses the well-known IPv4 multicast addresses 224.0.0.5 and a MAC address of 0100.5300.0005 to communicate with neighbors.
 
+Table 6-2 Default OSPFv2 Parameters
+
+Parameters
+Default
+Hello interval
+
+10 seconds
+
+Dead interval
+
+40 seconds
+
+Graceful restart grace period
+
+60 seconds
+
+OSPFv2 feature
+
+Disabled
+
+Stub router advertisement announce time
+
+600 seconds
+
+Reference bandwidth for link cost calculation
+
+40 Gb/s
+
+LSA minimal arrival time
+
+1000 milliseconds
+
+LSA group pacing
+
+10 seconds
+
+SPF calculation initial delay time
+
+200 milliseconds
+
+SPF minimum hold time
+
+5000 milliseconds
+
+SPF calculation initial delay time
+
+1000 milliseconds
+
+
+
 **Реализовать схему топологию CLOS** по схеме:
 ![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
 
