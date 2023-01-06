@@ -157,6 +157,9 @@ Spine01(config-if)# ip address 10.8.1.0 255.255.255.255
 <summary> Проверка параметров: </summary>
 
 ```
+ 
+ sh ip ospf neighbor
+ 
 Leaf-Switch-V1# show ip ospf
 
  Routing Process UNDERLAY with ID 10.1.1.54 VRF default
