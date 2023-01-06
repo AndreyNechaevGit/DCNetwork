@@ -159,6 +159,7 @@ Spine01(config-if)# ip address 10.8.1.0 255.255.255.255
 ```
  
  sh ip ospf neighbor
+ clear ip ospf process.
  
 Leaf-Switch-V1# show ip ospf
 
