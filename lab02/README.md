@@ -22,6 +22,10 @@ Designated Router (DR) и Backup Designated Router (BDR).
 - loopback 02 - для динамической маршрутизации Overlay <br>
 
 BFD is not supported for OSPFv3!!
+Network types are as follows:
+
+Point-to-point—A network that exists only between two routers. All neighbors on a point-to-point network establish adjacency and there is no DR.
+Broadcast—A network with multiple routers that can communicate over a shared medium that allows broadcast traffic, such as Ethernet. OSPFv2 routers establish a DR and BDR that controls LSA flooding on the network. OSPFv2 uses the well-known IPv4 multicast addresses 224.0.0.5 and a MAC address of 0100.5300.0005 to communicate with neighbors.
 
 **Реализовать схему топологию CLOS** по схеме:
 ![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
