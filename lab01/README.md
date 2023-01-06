@@ -205,6 +205,9 @@ VPCS> set pcname PC1
 PC1> ip 10.12.1.1 255.255.255.0 10.12.1.254
 Checking for duplicate address...
 PC1 : 10.12.1.1 255.255.255.0 gateway 10.12.1.254
+save
+Saving startup configuration to startup.vpc
+.  done
 ```
 
 <details>
