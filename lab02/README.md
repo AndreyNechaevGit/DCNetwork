@@ -7,4 +7,7 @@
 ## Построение Underlay сети(OSPF)
 
 **Реализовать схему топологию CLOS** по схеме:
-![image](https://user-images.githubusercontent.com/60564360/209561759-29e8faa6-6589-4280-a89a-70402c4a5fad.png)
+
+![image](https://user-images.githubusercontent.com/60564360/212604737-1ebb5ba8-e693-4d69-abcd-7f6462495156.png)
+
+
