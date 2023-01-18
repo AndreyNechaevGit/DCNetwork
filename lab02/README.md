@@ -38,15 +38,10 @@
 ```
 conf t
 router ospf UNDERLAY
-max-metriс router lsa include-stub
+  max-metriс router lsa include-stub
 ```
 
-
-
-
 ##  2. Базовые настройки OSPFv2 для Cisco Nexus v9500.
-
-Базовые настройки OSPFv2 для Cisco Nexus v9500: 
 
 На примере **Spline01**
 
@@ -82,8 +77,8 @@ key chain OSPF
 * `router ospf UNDERLAY` - указание строкового параметра в качетве ID OSPFv2 процесса
 * `router-id` - в качестве RID используем ip адресс lo1 на каждом устройстве
 * `log-adjacency-changes` - используется для отлеживания с логах состояние OSPF соседства
-* `passive interface default` - по умолчанию все интерфейсы не участвуют в OSPF
-* `key chain OSPF` - настройка MD5 ключа? который может использоватся для авторизации в OSPFv2
+* `passive interface default` - по умолчанию все интерфейсы не учавствуют в OSPF
+* `key chain OSPF` - настройка MD5 ключа, который может использоватся для авторизации в OSPFv2
 
 
 **2.2 Донастроим P2P интерфейсы на всех свитчах:**
@@ -111,9 +106,9 @@ interface loopback1
 * `point-to-point` - в сетях CLOS'а обычно используется ip адресация линков с сетями `/31` между двумя устройствами, поэтому ethernet интерфейсы помечаются как как point-to-point (p2p) линки при включении их в OSPF, что позволяет избежать лишних проблем вызванные выбором DR/BDR в больших brodcast сетях.
 * `mtu` - Для свитчей серии Cisco Nexus 9000, размер MTU может быть установлен до 9216.
 Размер MTU должен быть настроен идентично на двух сторонах линка.
->Комманда `ip ospf mtu-ignore` - может использоватся для устанавления OSPF соседства при различающемся MTU, но возможна ситуация когда LSA пакеты больше минимального MTU не будут достигать соседнего устройства и статус соединения будет постоянно EXSTART.
+>Комманда `ip ospf mtu-ignore` примененная к интерфейсу - может использоватся для устанавления OSPF соседства при различающемся MTU, но возможна ситуация когда LSA пакеты больше минимального MTU не будут достигать соседнего устройства и статус соединения будет постоянно EXSTART.
 * `no ip ospf passive-interface` - указание использование интерфейса в OSPFv2 протоколе
-* `ip ospf authentication message-digest` - использование аутенфикации
+* `ip ospf authentication message-digest` - использование аутенфикации на интерфейсе
 * `ip ospf authentication key-chain OSPF` - указание ключа аутефикации (одинаковый на всех устройствах)
 
 ***
@@ -142,7 +137,6 @@ Spine01# show ip ospf interface brief
  Eth1/3                  3      0.0.0.0         40     P2P      1         up
  Lo1                     4      0.0.0.0         1      LOOPBACK 0         up
 ```
-
 
 И выполнить запросы между несвязанными напрямую устройствами. <br>
 Например между свитчем **Spine01** и **Spine02**
@@ -238,7 +232,6 @@ router ospf UNDERLAY
   router-id 10.8.1.0
   log-adjacency-changes
   passive-interface default
-
 ```
 
 **Spine02**
@@ -442,5 +435,4 @@ router ospf UNDERLAY
   router-id 10.8.0.3
   log-adjacency-changes
   passive-interface default
-
 ```
