@@ -102,7 +102,7 @@ interface loopback1
   ip router ospf UNDERLAY area 0.0.0.0
 ```
 
-* `ip router ospf UNDERLAY area 0.0.0.0` - укажем одинаковую backbone area для нужных интефейсах
+* `ip router ospf UNDERLAY area 0.0.0.0` - укажем одинаковую backbone area на нужных интефейсах
 * `point-to-point` - в сетях CLOS'а обычно используется ip адресация линков с сетями `/31` между двумя устройствами, поэтому ethernet интерфейсы помечаются как как point-to-point (p2p) линки при включении их в OSPF, что позволяет избежать лишних проблем вызванные выбором DR/BDR в больших brodcast сетях.
 * `mtu` - Для свитчей серии Cisco Nexus 9000, размер MTU может быть установлен до 9216.
 Размер MTU должен быть настроен идентично на двух сторонах линка.
