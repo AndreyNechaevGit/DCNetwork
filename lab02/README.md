@@ -76,7 +76,7 @@ key chain OSPF
 ```
 * `router ospf UNDERLAY` - указание строкового параметра в качетве ID OSPFv2 процесса
 * `router-id` - в качестве RID используем ip адресс lo1 на каждом устройстве
-* `log-adjacency-changes` - используется для отлеживания с логах состояние OSPF соседства
+* `log-adjacency-changes` - используется для отлеживания в логах состояние OSPF соседства
 * `passive interface default` - по умолчанию все интерфейсы не учавствуют в OSPF
 * `key chain OSPF` - настройка MD5 ключа, который может использоватся для авторизации в OSPFv2
 
