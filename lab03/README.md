@@ -54,13 +54,13 @@ router isis UNDERLAY
 ```
 
 * `router isis Underlay` - указание строкового параметра в качестве ID IS-IS процесса
-* `net` - идентификатор для устройств в протоколе isis должен быть уникальным для каждого устройства в области  The `NET ID` is comprised of the IS-IS system ID, which uniquely identifies this IS-IS instance in the area, and the area ID. For example, if the NET ID is **49.0011**.*0008.0001.0000.00*, the `System ID` is *0008.0001.0000.00* and the `area ID` is **49.0011**.
+* `net` - идентификатор для устройств в протоколе isis должен быть уникальным для каждого устройства в области  For example, if the NET ID is **49.0011**.*0008.0001.0000.00*, the `System ID` is *0008.0001.0000.00* and the `area ID` is **49.0011**.
 > для каждого устройства укажем идентификатор net 49.0011.0001.000x.000y.00 y согласно lo1 10.8.x.y <br>
 > Lo1 10.8.2.0 <br>
 > NET 49.0010.0008.0002.0000.00
 * `is-type level-2` - указываем для использования протоколом IS-IS только L2 соседства
 * `log-adjacency-changes` - используется для отлеживания в логах состояние IS-IS соседства
-* `passive-interface default level-2` - указание не использовать все интерфейсы в ISIS
+* `passive-interface default level-2` - указание не использовать  интерфейсы в ISIS по умолчанию
 
 **1.2 Донастроим P2P интерфейсы на всех свитчах:**
 
