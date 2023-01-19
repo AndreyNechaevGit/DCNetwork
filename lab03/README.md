@@ -313,6 +313,7 @@ interface Ethernet1/3
 interface loopback1
   ip address 10.8.1.0/32
   ip router isis UNDERLAY
+  
 router isis UNDERLAY
   net 49.0011.0008.0001.0000.00
   is-type level-2
