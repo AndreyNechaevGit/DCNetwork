@@ -84,6 +84,7 @@ interface loopback1
 
 * `ip router isis Underlay` - укажем использовать IS-IS на нужных интефейсах
 * `isis network point-to-point` - в протоколе ISIS можно использовать два типа сетей Broadcast и Point-to-Point. Broadcast используется по умолчанию. Тип нужно указывать на дух сторонах линка
+* `isis circuit-type level-2` - указываем для использования протоколом IS-IS только L2 соседства
 * `medium p2p` - Configures the interface medium as either point to point
 
 
@@ -91,7 +92,7 @@ interface loopback1
 
 На всех устройствах выполним:
 
-Для настройки аутификации MD5 зоны
+Для настройки аутификации MD5 для зоны
 ```
 conf t
 
